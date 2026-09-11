@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f5f7fb" />
+  <title>Month at a Glance</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="calendar-card" aria-label="Monthly calendar">
+      <div class="calendar-toolbar">
+        <div>
+          <p class="month-kicker" id="monthKicker">Plan at a glance</p>
+          <h2 id="monthLabel">September 2026</h2>
+        </div>
+        <div class="month-controls" aria-label="Change month">
+          <button class="today-button" id="todayButton" type="button">Today</button>
+          <button class="icon-button" id="previousMonth" type="button" aria-label="Previous month">←</button>
+          <button class="icon-button" id="nextMonth" type="button" aria-label="Next month">→</button>
+        </div>
+      </div>
+
+      <div class="weekday-row" aria-hidden="true">
+        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+      </div>
+      <div class="calendar-grid" id="calendarGrid"></div>
+
+      <div class="calendar-footer">
+        <div class="legend"><span class="legend-dot today-dot"></span> Today <span class="legend-dot highlight-dot"></span> Important</div>
+        <div class="footer-actions">
+          <button class="share-button" id="shareButton" type="button"><span aria-hidden="true">↗</span> Share</button>
+          <button class="add-event-button" id="addEventButton" type="button"><span aria-hidden="true">+</span> Add event</button>
+        </div>
+      </div>
+    </section>
+
+    <p class="tip" id="calendarTip"><span aria-hidden="true">✦</span> Click any day to add what you need to remember.</p>
+  </main>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden>
+    <section class="event-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close-button" id="closeModal" type="button" aria-label="Close">×</button>
+      <p class="modal-kicker">Quick add</p>
+      <h2 id="modalTitle">Add an event</h2>
+      <p class="selected-date" id="selectedDateLabel"></p>
+      <form id="eventForm">
+        <label for="eventName">What do you need to remember?</label>
+        <input id="eventName" name="eventName" type="text" maxlength="70" placeholder="e.g. Call the dentist" autocomplete="off" required />
+
+        <div class="form-row">
+          <div>
+            <label for="eventTime">Time</label>
+            <input id="eventTime" name="eventTime" type="time" required />
+          </div>
+          <div>
+            <label for="repeatRule">Repeat</label>
+            <select id="repeatRule" name="repeatRule">
+              <option value="none">Does not repeat</option>
+              <option value="daily">Every day</option>
+              <option value="weekdays">Weekdays</option>
+              <option value="weekends">Weekends</option>
+              <option value="weekly">Every week</option>
+            </select>
+          </div>
+        </div>
+
+        <label class="checkbox-row" for="importantEvent">
+          <input id="importantEvent" name="importantEvent" type="checkbox" />
+          <span class="custom-checkbox" aria-hidden="true">✓</span>
+          <span>Mark as important</span>
+        </label>
+
+        <div class="modal-actions">
+          <button class="delete-button" id="deleteEventButton" type="button" hidden>Delete event</button>
+          <button class="save-button" id="saveEventButton" type="submit">Save event</button>
+        </div>
+        <div class="delete-options" id="deleteOptions" hidden>
+          <p>How much of this repeating event should be deleted?</p>
+          <button type="button" data-delete-scope="single">Only this date</button>
+          <button type="button" data-delete-scope="future">This and future dates</button>
+          <button type="button" data-delete-scope="all">All dates</button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <div class="modal-backdrop" id="shareResultBackdrop" hidden>
+    <section class="event-modal share-result-modal" role="dialog" aria-modal="true" aria-labelledby="shareResultTitle">
+      <button class="close-button" id="closeShareResult" type="button" aria-label="Close">×</button>
+      <p class="modal-kicker">Ready to share</p>
+      <h2 id="shareResultTitle">Your calendar link is copied</h2>
+      <p class="share-result-copy">Anyone with this link can view the selected events.</p>
+      <label for="shareUrlField">Share link</label>
+      <input id="shareUrlField" class="share-url-field" type="text" readonly />
+      <button class="save-button copy-again-button" id="copyAgainButton" type="button">Copy link again</button>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

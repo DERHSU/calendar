@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f5f7fb" />
+  <title>Shared month | Month at a Glance</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="shared-page">
+  <main class="app-shell">
+    <div class="shared-badge"><span aria-hidden="true">↗</span> Shared calendar · Read only</div>
+    <section class="calendar-card" aria-label="Shared monthly calendar">
+      <div class="calendar-toolbar">
+        <div>
+          <p class="month-kicker">Month at a Glance</p>
+          <h1 id="sharedMonthLabel">Shared month</h1>
+        </div>
+        <div class="month-controls" aria-label="Change month">
+          <button class="icon-button" id="previousMonth" type="button" aria-label="Previous month">←</button>
+          <button class="icon-button" id="nextMonth" type="button" aria-label="Next month">→</button>
+        </div>
+      </div>
+      <div class="weekday-row" aria-hidden="true">
+        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+      </div>
+      <div class="calendar-grid" id="sharedCalendarGrid"></div>
+      <div class="calendar-footer">
+        <div class="legend"><span class="legend-dot today-dot"></span> Today <span class="legend-dot highlight-dot"></span> Important</div>
+      </div>
+    </section>
+    <p class="tip"><span aria-hidden="true">✦</span> This calendar is read only.</p>
+  </main>
+  <script src="shared.js"></script>
+</body>
+</html>
